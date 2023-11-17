@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
 
 const Header = () => {
-  const [task, setTask] = useState('');
+  const [task, setTask] = useState("");
   const [taskList, setTaskList] = useState([]);
 
   function handleSubmit(e) {
-    e.preventDefault();
+    if (task.trim() === "") {
+        return;
+    }
+    else{
+      e.preventDefault();
 
-    let newTask = task;
-    setTaskList((taskList) => [...taskList, newTask]);
-    console.log(taskList);
+      let newTask = task;
+      setTaskList((taskList) => [...taskList, newTask]);
+      console.log(taskList);
 
-    setTask('');
+      setTask("");
+    }
   }
 
   function deleteTask(index){
